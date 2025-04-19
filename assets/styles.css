@@ -36,19 +36,24 @@ color: #e8e8e8;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 500px;
+    width: 800px;
     border: 1px solid var(--colorbutton);
     border-radius: 8px;
     background-color: var(--colorbase);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     margin: 16px;
+   
 }
-div .card:nth-child(1){
+div .card{
 
     width: 95vw;
     justify-content: center;
     flex-direction: column;
+   
+    
+
+
 }
 .card img {
     width: 100%;
@@ -58,11 +63,25 @@ div .card:nth-child(1){
 .card-body {
     padding: 16px;
     text-align: center;
-    font-size: 0.7rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    width: 85%;
+
+    div{
+
+       
+        padding-bottom: 10px;
+    }
+
+    button{
+        padding-top: 10px;
+        padding-bottom: 10px;
+
+    }
 
 }
 .card-title {
-    font-size: 0.85rem;
+    font-size: 1rem;
     font-weight: bold;
     margin-bottom: 8px;
     
@@ -89,4 +108,6 @@ div .card:nth-child(1){
 .card-button:hover {
     background-color: var(--colorcomponents);
 }
+
+
 
