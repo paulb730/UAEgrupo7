@@ -16,7 +16,6 @@ def header(txt:str):
             html.H1(txt, style={"textAlign": "center"}),
             ],
        )
-
 def card(title, content):
     return html.Div(
         className="card",
@@ -26,8 +25,6 @@ def card(title, content):
             ],
        
         )
-
-
 def table(data):
     # Read the CSV file into a pandas DataFrame
     df = data
@@ -41,7 +38,6 @@ def table(data):
             page_current=0,
             page_size=10,
         )
-    
 def figure(fig,id):
     return html.Div(
         className="figure-container",

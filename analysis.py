@@ -9,7 +9,6 @@ def filtrarpct(df):
     return result[str(Headers[1])]
 def agregarfilas(df,fila,contenido):
     df[fila]=contenido
-    
     return df
 def agruparporsentencia(df):
     agrupar=df.groupby(Headers[1]).agg({
@@ -55,10 +54,14 @@ def ventaspotenciales(df,pct):
 # Create a DataFrame from a dictionary
 def create_dataframe_from_dict(data_dict):
     return pd.DataFrame(data_dict)
+
 df1=agregarfilas(df,'Porcentaje_filtrado',filtrarpct(df))
+#1
 dic=getmaxminvalue(df1,'Porcentaje_filtrado',True)
 dic2=getmaxminvalue(df1,'Porcentaje_filtrado',False)
+#2
 dic3=ventaspotenciales(df,10)
+#3
 zonadebajouso=df[(df['public_transportation_pct']<2) &(df['public_transportation_pct']>0)]
 contador=zonadebajouso['public_transportation_population'].sum()
 #6 AGRUPAR CLIENTES POR % DE USO, PROMEDIO DE VENTAS, DIAGRAMA DE DISPORSION, EXPORTAR A EXCEL
@@ -70,7 +73,7 @@ df_group.columns=["Porcentaje","population"]
 df_group['zip_code']=df1['zip_code']
 suma_fix=df_group.sum()
 agrupar=df_group
-#df_group.columns["population"]
+
 
 
 

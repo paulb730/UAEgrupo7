@@ -30,7 +30,6 @@ Nivel de uso del transporte publico tiene alguna correlación con las ventas de
 la empresa de scooter en una zona postal determinada 
 """
 #Aqui estaran componentes como tablas y figuras 
-
 dic1=anl.dic
 dic2=anl.zonadebajouso
 cont=anl.contador
@@ -46,56 +45,37 @@ app.layout = html.Div([
             cpt.table(anl.dic2),
             cpt.figure(
                 cpt.barsfig(dic1,dic1['Porcentaje_filtrado'],dic1['Count']),
-                'MAX'
-            )
-                                        
-                                                             ]),
+                'MAX')]),
         cpt.card("3. Ventas potenciales promedio para clientes que viven en zonas de alto\
-                    transporte público ",cpt.table(anl.dic3)),
-        cpt.card("4. Zona de Bajo Uso de Transporte Publico",["Se define que las personas que consumen menor transporte publico estan en el rando del 0 al 2 %",
-                                                              
-                                                              cpt.table(dic2),
-                                                                    f"La cantidad de personas que consumen menor transporte publico son: {cont}"     ,
-                                                              
-                                                              
-                                                                 ]),
+                    transporte público ",
+                    cpt.table(anl.dic3)),
+        cpt.card("4. Zona de Bajo Uso de Transporte Publico",
+                 ["Se define que las personas que consumen menor transporte publico estan en el rando del 0 al 2 %",
+                    cpt.table(dic2),
+                    f"La cantidad de personas que consumen menor transporte publico son: {cont}",]),
         cpt.card("5. Histograma de los datos",
-                    cpt.figure(
-                                                                    cpt.merge_figure([
-                                                                            cpt.histogram(dic2,'public_transportation_pct'),
-                                                                       ]),
-
-                                                                    "ZONA"
-
-                                                              )
-                 
-                 ),
+                    cpt.figure(cpt.merge_figure([
+                              cpt.histogram(dic2,'public_transportation_pct'),]),
+                               "ZONA")),
         cpt.card("6. Agrupe a los potenciales clientes en función del uso del transporte público por\
-                    código postal",[cpt.table(agrupar), f"la suma de la poblacion agrupada es: {anl.suma_fix}"]),
-        cpt.card("7. Estimación Número promedio de ventas",[anl.str1]),
+                    código postal",
+                    [cpt.table(agrupar), f"la suma de la poblacion agrupada es: {anl.suma_fix}"]),
+        cpt.card("7. Estimación Número promedio de ventas",
+                 [anl.str1]),
         cpt.card("8. Gráfico de Dispersión para comprender la relación entre el uso del transporte\
                  publico y las potenciales ventas. Exportación de datos en excel",
-                 
-                 [cpt.figure(
-                     
+                 [cpt.figure(                     
                     cpt.scatter_chart(agrupar,agrupar['Porcentaje'],agrupar['population']),
-                    "dispersion"
-
-                 ),
-                 
+                    "dispersion"),
                  html.Button(id="exportar",n_clicks=0,children="Exportar a CSV EXCEL",className='card-button'),
-                 dcc.Download(id="download-excel")
-                 
-                 ]),
-        cpt.card("9. Recomendaciones para el equipo de marketing",[""])         
+                 dcc.Download(id="download-excel")]),
+        cpt.card("9. Recomendaciones para el equipo de marketing",[
+            html.Button(id="recomendacion",n_clicks=0,
+                        children=[html.A("Recomendaciones",
+                                        href='https://docs.google.com/document/d/1LJjeBoscP0YKzDgOAQyRWc5p96D_2PtGcuQYec5vncg/edit?usp=sharing', 
+                                        target="_blank")],className='card-button'),]) ])])
 
-
-
-
-    ])
-             ])
-
-
+#callbacks para funciones que ejecuta el usuario 
 @app.callback(
         Output("download-excel", "data"),
         Input('exportar', 'n_clicks'),

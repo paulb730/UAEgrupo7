@@ -104,6 +104,14 @@ div .card{
     text-decoration: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
+
+    a{
+
+        color: inherit;
+        text-decoration: inherit;
+        
+
+    }
 }
 .card-button:hover {
     background-color: var(--colorcomponents);
